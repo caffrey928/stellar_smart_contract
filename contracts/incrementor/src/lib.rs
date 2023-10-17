@@ -16,10 +16,17 @@ impl IncrementorContract {
 
         log!(&env, "count: {}", count);
 
-        env.storage().instance().set(&COUNTER, &count);
+        env.storage().persistent().set(&COUNTER, &count);
 
-        env.storage().instance().bump(&COUNTER, 100, 500);
+        env.storage().persistent().bump(&COUNTER, 100, 500);
 
+        count
+    }
+
+    pub fn remove(env: Env) -> u32{
+        let count: u32 = env.storage().persistent().get(&COUNTER).unwrap_or(0);
+        env.storage().persistent().remove(&COUNTER);
+        
         count
     }
 }
