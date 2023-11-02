@@ -169,8 +169,6 @@ impl ArchContract {
                 env.storage().persistent().set(&CLEAR, &clear_record);
                 env.storage().persistent().bump(&CLEAR, 100, 500);
 
-                Self::remove_ids(env.clone());
-
                 ReturnMessage::CLEAR(clear_record)
             }
             _ => ReturnMessage::ERROR(String::from_slice(&env, "No Transactions Exist!")),
@@ -188,6 +186,12 @@ impl ArchContract {
 
     pub fn remove_clear_record(env: Env) {
         env.storage().persistent().remove(&CLEAR);
+    }
+
+    pub fn remove_all(env:Env) {
+        Self::remove_user_usage(env.clone());
+        Self::remove_clear_record(env.clone());
+        Self::remove_ids(env.clone());
     }
 
     // pub fn random_address(address: Address) -> Address {
