@@ -9,7 +9,6 @@ fn arch() {
     let client = ArchContractClient::new(&env, &contract_id);
     // let address: Address = Address::random(&env);
     assert_eq!(1, 1);
-
     // let transaction_1: ReturnMessage = client.add_transaction(&symbol_short!("test_1"), &symbol_short!("Alice"), &symbol_short!("Telecom1"), &symbol_short!("Telecom2"), &1000);
     // let transaction_2: ReturnMessage = client.add_transaction(&symbol_short!("test_2"), &symbol_short!("Bob"), &symbol_short!("Telecom2"), &symbol_short!("Telecom1"), &2000);
     // let transaction_3: ReturnMessage = client.add_transaction(&symbol_short!("test_3"), &symbol_short!("Sam"), &symbol_short!("Telecom3"), &symbol_short!("Telecom2"), &3000);

@@ -1,11 +1,11 @@
 import subprocess
 import random
 
-network_id = ""
+network_id = "CAAGS6S6NCH3SY2NUJJKVGMA5DFMLFKYSIPE6GAYOZ42XGBOGLRPVHIP"
 
 User = {}
 Clear = {}
-for i in range(1, 4):
+for i in range(101, 201):
     user = "User" + str(random.randrange(1, 11))
     usage = random.randrange(1, 1001)
     telecom_num = random.sample(range(1, 4), 2)

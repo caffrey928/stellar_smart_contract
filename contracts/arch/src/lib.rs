@@ -1,5 +1,5 @@
 #![no_std]
-use soroban_sdk::{contract, contractimpl, symbol_short, Env, Symbol, Vec, vec, Map, I256, map, String};
+use soroban_sdk::{contract, contractimpl, symbol_short, Env, Symbol, Vec, vec, Map, I256, map, String, Address};
 use soroban_sdk::contracttype;
 // use soroban_sdk::testutils::Address as TraitAddress;
 
@@ -23,7 +23,9 @@ pub struct ArchContract;
 
 #[contractimpl]
 impl ArchContract {
-    pub fn add_transaction(env: Env, id: Symbol, user: Symbol, telecom_pay: Symbol, telecom_receive: Symbol, usage: i32) -> ReturnMessage {
+    pub fn add_transaction(env: Env, id: Symbol, auth: Address, user: Symbol, telecom_pay: Symbol, telecom_receive: Symbol, usage: i32) -> ReturnMessage {
+        auth.require_auth();
+        
         let find_transaction: Map<Vec<Symbol>, I256> = env.storage().persistent().get(&id).unwrap_or(Map::new(&env));
         if find_transaction != Map::new(&env) {
             return ReturnMessage::ERROR(String::from_slice(&env, "Replicated ID")); // Return from the main function
