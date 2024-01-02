@@ -63,8 +63,6 @@ impl ArchContract {
 
         env.storage().persistent().set(&key, &telecom_storage);
 
-        env.storage().persistent().bump(&key, 100, 500);
-
         return ReturnMessage::TRANSACTION(transaction);
     }
 
@@ -141,7 +139,6 @@ impl ArchContract {
                 }
 
                 env.storage().persistent().set(&key, &user_usage_record);
-                env.storage().persistent().bump(&key, 100, 500);
 
                 ReturnMessage::USERUSAGE(user_usage_record)
             }
@@ -224,7 +221,6 @@ impl ArchContract {
                 }
 
                 env.storage().persistent().set(&key, &clear_record);
-                env.storage().persistent().bump(&key, 100, 500);
 
                 ReturnMessage::CLEAR(clear_record)
             }
@@ -282,7 +278,6 @@ impl ArchContract {
         
         let clear_key = DataKey::FULLCLEAR(neutral_auth.clone());
         env.storage().persistent().set(&clear_key, &full_clear);
-        env.storage().persistent().bump(&clear_key, 100, 500);
 
         ReturnMessage::CLEAR(full_clear)
     }
@@ -295,7 +290,6 @@ impl ArchContract {
         accounts.push_back(account.clone());
 
         env.storage().persistent().set(&key, &accounts);
-        env.storage().persistent().bump(&key, 100, 500);
 
         ReturnMessage::ACCOUNT(accounts)
     }
