@@ -18,8 +18,6 @@ impl IncrementorContract {
 
         env.storage().persistent().set(&COUNTER, &count);
 
-        env.storage().persistent().bump(&COUNTER, 100, 500);
-
         count
     }
 
