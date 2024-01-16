@@ -26,3 +26,4 @@ pnpm-debug.log*
 test_snapshots/
 
 .soroban
+__pycache__
