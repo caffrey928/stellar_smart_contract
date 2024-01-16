@@ -15,14 +15,14 @@ def test():
     return transaction.test()
 
 #################### Transaction ####################
-# data: {auth, user, telecom_receive, usage}
+# data: {user, telecom_pay, usage}
 @app.route('/<telecom>/transaction/add', methods=['POST'])
 def add_transaction(telecom):
     if request.method == 'POST':
         transaction = TransactionClass(telecom)
         data = request.get_json()
         try:
-            transaction.add(data["user"], telecom, data["telecom_receive"], data["usage"])
+            transaction.add(data["user"], data["telecom_pay"], telecom, data["usage"])
             return 'Success', 200
         except:
             return 'Fail', 403
