@@ -14,14 +14,11 @@ class TransactionClass:
         self.contract = contract_id.stdout.decode('ascii')[:-1]
         self.auth = auth_id.stdout.decode('ascii')[:-1]
 
-    def test(self):
-        return self.auth
-
     def add(self, user, telecom_pay, telecom_receive, usage):
         try:
             subprocess.run(["soroban", "contract", "invoke", 
                         "--id", self.contract, 
-                        "--source", telecom_pay,
+                        "--source", telecom_receive,
                         "--network", "testnet",
                         "--", 
                         "add_transaction", 

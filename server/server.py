@@ -9,11 +9,6 @@ app = Flask(__name__)
 def hello():
     return 'Hello, World!'
 
-@app.route('/test')
-def test():
-    transaction = TransactionClass("telecom1")
-    return transaction.test()
-
 #################### Transaction ####################
 # data: {user, telecom_pay, usage}
 @app.route('/<telecom>/transaction/add', methods=['POST'])
